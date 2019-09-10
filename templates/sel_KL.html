@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="./statics/js/jquery-3.1.1.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <title>Crescom Labeling</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="./statics/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="./statics/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="./statics/dist/css/sb-admin-2.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="./statics/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+            .select {
+                margin : 0 auto;
+                margin-top : 10px;
+                padding : 10px;
+                margin-left : 67px;
+                margin-right : 67px;
+                height: 100%;
+                color: #96a9bd;
+                font-family: NanumBarunGothicOTF;
+            }
+
+            .bg {
+                background-color: #1e2333;
+                box-shadow: 0px 5px 38px 0 rgba(0, 0, 0, 0.2);
+            }
+
+            .top_header {
+                height: 70px;
+                background-color: #060b17;
+                padding-top: 13px;
+                padding-left: 46px;
+            }
+
+            .top_header a {
+                float: left;
+                font-family: AppleGothic;
+                font-size: 30px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: 1.5px;
+                text-align: center;
+                color: #c0d1e0;
+                text-decoration: none;
+            }
+
+            .header-right {
+                margin-right: 46px;
+                padding-top: 12px;
+            }
+
+            .header-right a {
+                float: right;
+                font-family: NanumBarunGothicOTF;
+                font-size: 15px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #c0d1e0;
+                margin-left: 34px;
+                text-decoration: none;
+            }
+
+            .header-right a:hover {
+                color: #31acff;
+            }
+
+            .history {
+                width: 120px;
+                height: 32px;
+                border-radius: 6.4px;
+                background-color: #32384c;
+                border: solid 1px #3d4356;
+                margin-left : px;
+                margin-top : 9px;
+            }
+
+            .Study {
+                width: 74px;
+                height: 22px;
+                font-family: NanumBarunGothicOTF;
+                font-size: 25px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.43;
+                letter-spacing: 1.5px;
+                text-align: left;
+                color: #c0d1e0;
+            }
+
+            .bt_del {
+                width: 109px;
+                height: 40px;
+                border-radius: 5px;
+                background-color: #393e52;
+                border: solid 1px #515a7b;
+                font-size : 17px;
+                font-family: NanumBarunGothicOTF;
+                color:#c0d1e0;
+                float:right;
+            }
+
+            .bt_create {
+                width: 120px;
+                height: 40px;
+                border-radius: 5px;
+                background-color: #393e52;
+                border: solid 1px #515a7b;
+                font-size : 17px;
+                font-family: NanumBarunGothicOTF;
+                color:#c0d1e0;
+                float:right;
+            }
+
+
+            table, tr, td, th{
+                border : 0px solid white
+                text-align : center;
+                margin : auto;
+            }
+
+
+            tbody tr:nth-child(odd) {
+                background-color : #393e52;
+            }
+
+            tbody tr:nth-child(even) {
+                background-color : #1e2333;
+            }
+
+
+            thead {
+                width: 1309px;
+                height: 46px;
+                background-color: #626a81;
+                box-shadow: 0 0 5px 0 rgba(12, 6, 14, 0.1);
+            }
+
+            table {
+                color : #ccd2e4;
+            }
+
+            select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+            }
+
+            select::-ms-expand {
+                display: none;
+            }
+
+
+            select {
+                width: 140px;
+                height : 40px;
+                font-family: NanumBarunGothicOTF;
+                border: 1px solid #999;
+                border-radius: 5px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-color : #393e52;
+                font-size : 17px;
+            }
+
+            select:hover {
+                background-color : #000000;
+            }
+
+            .search {
+                width: 290px;
+                height : 40px;
+                vertical-align: middle;
+                white-space: nowrap;
+                position: relative;
+            }
+
+            #srch {
+                width: 290px;
+                height: 40px;
+                border-radius: 3px;
+                background-color: #191c27;
+                border: solid 1px #353c54;
+            }
+
+            .icon_btn{
+                 position: absolute;
+                 margin-left : 250px;
+                 margin-top : 1.3px;
+                 background-color : none;
+                 width : 38px;
+                 height : 38px;
+                 border : 0px;
+                 background-color : #191c27;
+            }
+
+            .box {
+                width: 290px;
+                height: 40px
+            }
+
+            .fa fa-search{
+                width : 50px;
+                height : 50px;
+            }
+
+            table,thead,th,tr,tbody,td {
+                text-align : center;
+            }
+
+            .pagination {
+                display: inline-block;
+            }
+
+            .pagination a {
+                color: #c0d1e0;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+            .pagination a.active {
+                color: #31acff;
+            }
+
+            .pagination a:hover:not(.active) {
+                color:#31acff;
+            }
+}
+
+        </style>
+        <script type="text/javascript">
+        function allChk(obj){
+            var chkObj = document.getElementsByName("RowCheck");
+            var rowCnt = chkObj.length - 1;
+            var check = obj.checked;
+            if (check) {﻿
+                for (var i=0; i<=rowCnt; i++){
+                    if(chkObj[i].type == "checkbox"){
+                        chkObj[i].checked = true;
+                    }
+                }
+            } else {
+                for (var i=0; i<=rowCnt; i++) {
+                    if(chkObj[i].type == "checkbox"){
+                        chkObj[i].checked = false;
+                    }
+                }
+            }
+        }
+
+        <!--function fn_userDel(){-->
+            <!--var userid = "";-->
+            <!--var memberChk = document.getElementsByName("RowCheck");-->
+            <!--var chked = false;-->
+            <!--var indexid = false;-->
+            <!--var second = 3;-->
+
+            <!--var num_delete = 0;-->
+            <!--for(i=0; i < memberChk.length; i++){-->
+                <!--if(memberChk[i].checked){-->
+                    <!--num_delete += 1-->
+                <!--}-->
+            <!--}-->
+
+            <!--var ridList = new Array(num_delete)-->
+            <!--for(i=0; i < memberChk.length; i++){-->
+                <!--if(memberChk[i].checked){-->
+                    <!--ridList[i] = memberChk[i].value;-->
+                <!--}-->
+            <!--}-->
+            <!--if(num_delete != 0){-->
+                <!--$.ajax({-->
+                    <!--type : 'POST',-->
+                    <!--url : 'del_project',-->
+                    <!--data : JSON.stringify({"deleteList":ridList, "second":second}),-->
+
+                    <!--contentType: 'application/json',-->
+                    <!--success : function(response, status) {-->
+                        <!--alert('success to delete');-->
+                        <!--window.location.reload();-->
+                        <!--return;-->
+                    <!--},-->
+                    <!--error : function() {-->
+                        <!--alert('fail to delete');-->
+                        <!--return;-->
+                    <!--}-->
+                <!--});-->
+
+            <!--}else{-->
+                <!--alert('nothing checked');-->
+            <!--}-->
+
+        <!--}-->
+
+        </script>
+    </head>
+
+    <body class="bg" >
+        <!--menu bar-->
+        <div class="top_header">
+            <a href="/" class="logo">CRESCOM</a>
+            <div class="header-right">
+                <a href="/logout"><img
+                        src="statics/icon/icon-logout.png"
+                        srcset="statics/icon/icon-logout@2x.png 2x, statics/icon/icon-logout@3x.png 3x"
+                        class="icon_logout">
+                    Logout</a>
+                <a href="/study_record"><img
+                        src="statics/icon/history-icon.png"
+                        srcset="statics/icon/history-icon@2x.png 2x,statics/icon/history-icon@3x.png 3x"
+                        class="icon_help">
+                    Fracture</a>
+                <a href="/record"><img
+                        src="statics/icon/history-icon.png"
+                        srcset="statics/icon/history-icon@2x.png 2x,statics/icon/history-icon@3x.png 3x"
+                        class="icon_help">
+                    Project</a>
+            </div>
+        </div>
+
+        <!--option select box-->
+        <div class="select">
+            <a href="/knee_record"><p class="Study" >Knee&nbsp;OA</p></a><br>
+
+            <select onchange="if(this.value) location.href=(this.value);">
+                <option selected disabled hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Project Name</option>
+                <option value="/knee_record?chose_opt=2">&nbsp;&nbsp;&nbsp;&nbsp;ASC</option>
+                <option value="/knee_record?chose_opt=3">&nbsp;&nbsp;&nbsp;&nbsp;DESC</option>
+            </select>
+            <select onchange="if(this.value) location.href=(this.value);">
+                <option selected disabled hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KL Grade</option>
+                <option value="/knee_record?chose_opt=14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None</option>
+                <option value="/knee_record?chose_opt=4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</option>
+                <option value="/knee_record?chose_opt=5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</option>
+                <option value="/knee_record?chose_opt=6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2</option>
+                <option value="/knee_record?chose_opt=7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</option>
+                <option value="/knee_record?chose_opt=8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</option>
+            </select>
+            <select onchange="if(this.value) location.href=(this.value);">
+                <option selected disabled hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age</option>
+                <option value="/knee_record?chose_opt=9">&nbsp;&nbsp;&nbsp;&nbsp;ASC</option>
+                <option value="/knee_record?chose_opt=10">&nbsp;&nbsp;&nbsp;&nbsp;DESC</option>
+            </select>
+            <select onchange="if(this.value) location.href=(this.value);">
+                <option selected disabled hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gender</option>
+                <option value="/knee_record?chose_opt=1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</option>
+                <option value="/knee_record?chose_opt=11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</option>
+                <option value="/knee_record?chose_opt=12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Female</option>
+                <option value="/knee_record?chose_opt=13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None</option>
+            </select>
+            <!--test history table-->
+            <br><br>
+            <table class="table table">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Project Name</th>
+                    <th>KL Grade</th>
+                    <th>Sclerosis</th>
+                    <th>JSW</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for img_name, project_img, KL_grade, sclerosis, jsw, age, gender in ownrecord %}
+                <tr>
+                    <td><a href="/sel_project?filename={{project_img}}/{{img_name}}">{{img_name}}</a></td>
+                    <td>{{project_img}}</td>
+                    <td>{{KL_grade}}</td>
+                    <td>{{sclerosis}}</td>
+                    <td>{{jsw}}</td>
+                    <td>{{age}}</td>
+                    <td>{{gender}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <center>
+                {{ pagination.links }}
+            </center>
+        </div>
+    </body>
+</html>
