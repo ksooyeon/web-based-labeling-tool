@@ -1,4 +1,4 @@
-#19.07.01 make by kim
+#19.07.01 made by kim
 
 from flask import Flask, render_template, json, request,redirect,session, send_from_directory
 from flask_paginate import Pagination, get_page_parameter
@@ -27,8 +27,8 @@ mysql = MySQL()
 app = Flask(__name__, static_url_path="/statics", static_folder="statics")
 
 # MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'root';
-app.config['MYSQL_DATABASE_PASSWORD'] = 'cres0302';
+app.config['MYSQL_DATABASE_USER'] = '****';
+app.config['MYSQL_DATABASE_PASSWORD'] = '****';
 app.config['MYSQL_DATABASE_DB'] = 'membership';
 app.config['MYSQL_DATABASE_HOST'] = 'localhost';
 mysql.init_app(app)
@@ -41,7 +41,7 @@ app.config['UPLOAD_TW3'] = './statics/tw3_roi/'
 # app.config['MODAL'] = './statics/Uploads/'
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'bmp'])
 app.config['DCM_EXTENSIONS'] = set(['dcm'])
-app.secret_key = 'why would I tell you my secret key?'
+app.secret_key = '****'
 
 # checking image extension
 def allowed_file(filename):
