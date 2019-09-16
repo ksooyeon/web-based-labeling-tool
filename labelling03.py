@@ -19,7 +19,7 @@ import json_seperator
 import fill_json
 
 # change main path when copy to other device
-main_path = '/home/crescom/Labeling/'
+main_path = '/home/****/Labeling/'
 os.chdir(main_path)
 
 mysql = MySQL()
@@ -568,5 +568,5 @@ def dcm_file(filename):
            filename.rsplit('.', 1)[1] in app.config['DCM_EXTENSIONS']
 
 if __name__ == "__main__":
-    app.run(host='59.13.125.147', port=29188)
+    app.run(host='***.***.***.***', port=***)
     # app.run()
