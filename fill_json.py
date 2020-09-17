@@ -1,4 +1,3 @@
-#made by Hwang
 def fill(project_content, _db_age_list, _db_gender_list):
 
     content = project_content
